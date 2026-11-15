@@ -1,0 +1,24 @@
+
+[
+    {
+        "id": 1,
+        "title": "Jeu du pendu",
+        "image": "/static/images/pendu.png",
+        "stack": [
+            "Go",
+            "HTML",
+            "CSS"
+        ],
+        "intro": "Un jeu du pendu développé dans le cadre de mon apprentissage de la programmation.",
+        "description": "Le jeu du pendu consiste à retrouver un mot caché en proposant différentes lettres. Le programme vérifie les lettres proposées par le joueur et affiche progressivement les lettres trouvées. Le joueur doit retrouver le mot avant d'avoir épuisé ses tentatives.",
+        "features": [
+            "Affichage d'un mot caché",
+            "Proposition de lettres",
+            "Vérification des lettres proposées",
+            "Gestion des erreurs",
+            "Affichage de la progression du joueur"
+        ],
+        "repository": "https://github.com/",
+        "video": ""
+    }
+]

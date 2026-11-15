@@ -1,44 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <title>Mon Projet détaillé</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>{{.Title}} - Matteo Solaz</title>
 </head>
 <body>
+
     <header>
-        <div class="logo">
-            <strong>Solaz Matteo</strong>
-        </div>
+        <div><strong>Solaz Matteo</strong></div>
         <nav>
             <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="projets.html">Projets</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/projects">Projets</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="projet-entete">
-            <h1>Projet : Jeu du Pendu</h1>
-            <p>Développement d'un jeu classique avec gestion de comptes utilisateurs, persistance des données et tableau des scores.</p>
+        <section>
+            <h1>Projet : {{.Title}}</h1>
+            <img src="{{.Image}}" alt="{{.Title}}" width="350">
+            <p>{{.Intro}}</p>
+
+            <h2>Présentation détaillée</h2>
+            <p>{{.Description}}</p>
         </section>
 
-        <section id="fonctionnalites">
-            <h2>Fonctionnalités Clés</h2>
+        <section>
+            <h2>Fonctionnalités clés</h2>
+            {{if .Features}}
             <ul>
-                <li><strong>Mécanique de jeu :</strong> Algorithme de sélection aléatoire d'un mot secret, gestion des essais et affichage dynamique du mot masqué.</li>
-                <li><strong>Système Multi-Pseudo :</strong> Possibilité pour chaque utilisateur de créer un profil unique afin de centraliser son historique de jeu.</li>
-                <li><strong>Sauvegardes multiples :</strong> Persistance de l'état des parties (mots, lettres tentées, essais restants) permettant d'interrompre et de reprendre une partie plus tard.</li>
-                <li><strong>Classement Général :</strong> Tableau d'honneur mettant en avant les meilleurs joueurs selon la difficulté, des victoires et du nombre d'erreurs commises.</li>
+                {{range .Features}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+            {{else}}
+            <p>Les fonctionnalités de ce projet seront ajoutées prochainement.</p>
+            {{end}}
+        </section>
+
+        <section>
+            <h2>Technologies utilisées</h2>
+            <ul>
+                {{range .Stack}}
+                <li>{{.}}</li>
+                {{end}}
             </ul>
         </section>
+
+        <section>
+            <h2>Dépôt GitHub</h2>
+            <a href="{{.Repository}}" target="_blank" rel="noopener noreferrer">Voir le code source sur GitHub</a>
+        </section>
+
+        {{if .Video}}
+        <section>
+            <h2>Vidéo de démonstration</h2>
+            <video width="500" controls>
+                <source src="{{.Video}}" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </section>
+        {{end}}
+
+        <a href="/projects">Retour aux projets</a>
     </main>
-    
+
     <footer>
         <p>&copy; 2026 Matteo Solaz</p>
     </footer>
+
 </body>
 </html>

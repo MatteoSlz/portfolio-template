@@ -1,71 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>Mes Projets</title>
-    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+
     <header>
-        <div class="logo">
-            <strong>Solaz Matteo</strong>
-        </div>
+        <div><strong>Solaz Matteo</strong></div>
         <nav>
             <ul>
-                <li><a href="../index.html">Accueil</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="detail_projet.html">Projet "Jeu du pendu" détaillé</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/projects">Projets</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="page-projets">
+    <main>
         <section>
-            <h1>Mon Portfolio : 5 Projets</h1>
-            <p>Découvrez les 5 applications et travaux informatiques que j'ai réalisés au cours de mon cursus scolaire.</p>
+            <h1>Mon Portfolio : {{len .}} Projets</h1>
+            <p>Découvrez les applications et travaux informatiques que j'ai réalisés au cours de mon cursus scolaire.</p>
 
-            <div id="liste_projets">
-                <article id="projet-1">
-                    <h2>Jeu du Pendu</h2>
-                    <p>Développement d'un jeu du pendu classique fonctionnant en mode console.</p>
-                    <p><strong>Langage utilisé :</strong> Golang </p>
-                    <a href="https://github.com/MatteoSlz/Jeu_du_pendu" id="lien-projet-1">Voir sur GitHub</a>
-                </article>
+            <div>
+                {{range .}}
+                <article>
+                    <h2>{{.Title}}</h2>
+                    <img src="{{.Image}}" alt="{{.Title}}" width="250">
+                    <p>{{.Intro}}</p>
 
-                <article id="projet-2">
-                    <h2>Portfolio Web</h2>
-                    <p>Création d'un site web complet pour présenter mon profil et mes compétences techniques.</p>
-                    <p><strong>Langages utilisés :</strong> HTML, CSS</p>
-                    <a href="https://github.com/MatteoSlz/portofolio" id="lien-projet-2">Voir sur GitHub</a>
-                </article>
+                    <p><strong>Technologies utilisées :</strong> {{range $index, $tech := .Stack}}{{if $index}}, {{end}}{{$tech}}{{end}}</p>
 
-                <article id="projet-3">
-                    <h2>TP Web </h2>
-                    <p>Projet impliquant la conception et la mise en œuvre d'un site web interactif style jeu.</p>
-                    <p><strong>Langages utilisés :</strong> HTML, CSS</p>
-                    <a href="https://github.com/MatteoSlz/matteo_solaz_tp-web" id="lien-projet-3">Voir sur GitHub</a>
+                    <a href="{{.Repository}}" target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
+                    <br><br>
+                    <a href="/projects/{{.ID}}">Consulter</a>
                 </article>
-
-                <article id="projet-4">
-                    <h2>Projet Reloaded</h2>
-                    <p>Optimisation et refactoring d'un outil algorithmique de traitement de données.</p>
-                    <p><strong>Langage utilisé :</strong> Golang </p>
-                    <a href="https://github.com/MatteoSlz/Projet_reloaded" id="lien-projet-4">Voir sur GitHub</a>
-                </article>
-
-                <article id="projet-5">
-                    <h2>Projet Red 2026-2027</h2>
-                    <p>Jeu vidéo style MMO avec un Lore de Game of Thrones</p>
-                    <p><strong>Outils & Langages :</strong> Git, Golang</p>
-                    <a href="https://github.com/MatteoSlz/Projet-Red-2026-2027" id="lien-projet-5">Voir sur GitHub</a>
-                </article>
+                {{else}}
+                <p>Aucun projet disponible.</p>
+                {{end}}
             </div>
         </section>
     </main>
-    
+
     <footer>
-         <p>&copy; 2026 Matteo Solaz</p>
+        <p>&copy; 2026 Matteo Solaz</p>
     </footer>
+
 </body>
 </html>
