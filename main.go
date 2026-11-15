@@ -19,7 +19,6 @@ type Project struct {
 	Description string   `json:"description"`
 	Features    []string `json:"features"`
 	Repository  string   `json:"repository"`
-	Video       string   `json:"video"`
 }
 
 var templates *template.Template
